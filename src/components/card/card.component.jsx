@@ -1,6 +1,11 @@
 import React from 'react';
 import './card.styles.scss';
 
-const card = () => (
-    <div className='card'></div>
+const Card = () => (
+    <div className='card'>
+        <div className='image'></div>
+        <div className='news-title'></div>
+    </div>
 )
+
+export default Card;
