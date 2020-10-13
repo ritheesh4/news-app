@@ -4,21 +4,15 @@ import Card from "../card/card.component";
 import Grid from "@material-ui/core/Grid";
 
 const CardsContainer = () => (
-  <Grid container direction="row" alignItems="center" justify={"space-around"} rows ={4}>
+  <div className='cards-container'>
     <Card />
     <Card />
     <Card />
     <Card />
     <Card />
     <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-  </Grid>
+
+  </div>
 );
 
 export default CardsContainer;
