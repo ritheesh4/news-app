@@ -7,10 +7,7 @@ import { connect } from 'react-redux';
 import { fetchNews } from './redux/home/home.actions';
 
 class App extends React.Component {
-
-
   componentDidMount() {
-
     const { fetchNews } = this.props;
     (async () => {
       await fetch('http://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=69cf4a8328d54e23921a8be3e595f01b').then(response => response.json()
@@ -18,10 +15,8 @@ class App extends React.Component {
           news:data.articles
         })));
     })()
-
-
-
   }
+
   render() {
     return (
       <div>
