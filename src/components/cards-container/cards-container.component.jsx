@@ -8,15 +8,14 @@ const CardsContainer = (props) => {
   return (
     <div className="cards-container">
       {props.result
-        ? props.result.map((item) => {
-            console.log(item);
+        ? props.result.map((item) => (
             <Card
-              id={item.title}
+              key={item.title}
               title={item.title}
-              image={item.url}
+              image={item.urlToImage}
               description={item.description}
-            />;
-          })
+            />
+          ))
         : ""}
     </div>
   );
