@@ -48,7 +48,6 @@ const mapStateToProps = (state) => {
     console.log();
     return { result: Object.values(result) };
   } catch {}
-  console.log("hello");
   return { newsList: [0] };
 };
 
