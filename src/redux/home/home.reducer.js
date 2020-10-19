@@ -1,7 +1,7 @@
 import { HomeActionTypes } from './home.types';
 
 const INITIAL_STATE = {
-    newsList: null
+    newsListData: null
 }
 
 const homeReducer = (state = INITIAL_STATE, action) => {

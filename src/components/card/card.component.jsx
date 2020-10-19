@@ -1,12 +1,14 @@
 import React from "react";
 import "./card.styles.scss";
-import BookMark from '../bookmark/bookmark.component';
+import BookMark from "../bookmark/bookmark.component";
 
-const Card = () => (
-  <div className="card">
-    <div className="news-title">hello</div>
+const Card = (id,title,image,decription) => (
+  <div className="card" id={id}>
+    <div className="news-title">
+   {title}
+    </div>
     <div className="image">
-      <img src="https://i.picsum.photos/id/612/200/300.jpg?hmac=vJ35AV5-TQa5ET5az0aESTnI3zaFCjRYD9OnYaiYIYc"></img>
+      <img src={image}></img>
     </div>
     <BookMark />
   </div>
