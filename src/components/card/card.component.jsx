@@ -15,6 +15,7 @@ import { red } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Grid from "@material-ui/core/Grid";
 import WatchLaterIcon from "@material-ui/icons/PlaylistAdd";
+import { Route } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,45 +40,57 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({ id, title, image, description, publishedAt }) => {
+const Card = ({ key, title, image, description, publishedAt }) => {
   const classes = useStyles();
+  console.log(title);
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const testWatchLater = (e) => {
-    e.preventDefault();
-    console.log("hi");
-  };
+  // const testWatchLater = () => {
+  //   console.log("hi");
+  //   history.push("/news");
+  // };
   return (
     <Grid item xs={3}>
-      <CardBody className={classes.root} key={id}>
+      <CardBody className={classes.root} key={title}>
         <CardHeader title={title} subheader={publishedAt} />
-        <CardMedia
-          className={classes.media}
-          image={image}
-          title="Paella dish"
-        />
+        <CardMedia className={classes.media} image={image} title="News card." />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {description}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <WatchLaterIcon onclick={testWatchLater} />
-          </IconButton>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
+          <Route
+            render={({ history }) => (
+              <IconButton
+                onClick={() => {
+                  history.push("/news");
+                }}
+                aria-label="add to favorites"
+              >
+                <WatchLaterIcon />
+              </IconButton>
+            )}
+          />
+          <Route
+            render={({ history }) => (
+              <IconButton
+                className={clsx(classes.expand, {
+                  [classes.expandOpen]: expanded,
+                })}
+                onClick={() => {
+                  history.push("/news");
+                }}
+                aria-expanded={expanded}
+                aria-label="show more"
+              >
+                <ExpandMoreIcon />
+              </IconButton>
+            )}
+          />
         </CardActions>
       </CardBody>
     </Grid>

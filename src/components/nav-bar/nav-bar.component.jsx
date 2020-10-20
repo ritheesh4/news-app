@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
+import BreakingNews from "../breaking-news/breakingNews.component";
 
 const styles = {
   root: {
@@ -22,6 +23,7 @@ const NavigationBar = () => (
         News Times
       </Typography>
     </Toolbar>
+    <BreakingNews />
   </AppBar>
   
 );
