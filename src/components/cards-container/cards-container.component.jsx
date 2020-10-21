@@ -30,8 +30,6 @@ const CardsContainer = (props) => {
 
 const mapStateToProps = (state) => {
   if (window.location.pathname === "/bookmarks") {
-    console.log(state.bookMarkItem);
-    console.log("hello");
     return { result: state.bookMarkItem };
   } else {
     try {

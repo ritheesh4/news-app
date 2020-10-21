@@ -3,8 +3,17 @@
 }
 
 .app-bar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    .MuiSvgIcon-root{
+      fill:White;
+      font-size: 1.4em;
+    }
+    .MuiIconButton-root {
+      font-size: 1.4em;
+      padding:8px;
+    }
+    
 }
