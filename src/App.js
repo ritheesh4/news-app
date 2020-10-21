@@ -33,9 +33,9 @@ class App extends React.Component {
 //   newsList: data
 // })
 
-const mapDispatchToprops = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   fetchNews: data => dispatch(fetchNews(data))
 })
 
 
-export default connect(null, mapDispatchToprops)(App);
+export default connect(null, mapDispatchToProps)(App);
