@@ -1,18 +1,25 @@
-import {BookmarksActionTypes} from './bookmarks.actions';
+import { BookmarksActionTypes } from './bookmarks.types';
 
-const INITIAL_STATE = {
-    bookmarksList: null
-}
+const INITIAL_STATE = [
+    { bookmarksList: null }
+]
 
-const bookmarksReducer = (state = INITIAL_STATE, action) => {
+const bookmarksReducer = (list = INITIAL_STATE, action) => {
     switch (action.type) {
         case BookmarksActionTypes.BOOKMARK_ITEM:
+            const bookMarkIndex = list.findIndex(
+                (eachObj) => eachObj.title === action.payload[0].title
+            );
+            if (bookMarkIndex) {
+                list.splice(bookMarkIndex, 1);
+            } else {
+                list.push(...action.payload);
+            }
             return {
-                ...state,
-                newsListData: action.payload
+                bookmarksList: list
             }
         default:
-            return state;
+            return list;
     }
 }
 
