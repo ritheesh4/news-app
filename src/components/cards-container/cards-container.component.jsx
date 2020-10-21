@@ -25,7 +25,6 @@ const CardsContainer = (props) => {
 const mapStateToProps = (state) => {
   try {
     const result = { ...state.news.newsList.news };
-    console.log();
     return { result: Object.values(result) };
   } catch {}
   return { newsList: [0] };

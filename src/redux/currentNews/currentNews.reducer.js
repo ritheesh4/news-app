@@ -1,7 +1,7 @@
 import {CurrentNewsActionTypes} from './currentNews.types';
 
 const INITIAL_STATE = {
-    newsListData: null
+    newsListData: "hello"
 }
 
 const currentNewsReducer = (state = INITIAL_STATE, action) => {

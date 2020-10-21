@@ -1,6 +1,8 @@
 import React from "react";
 import "./card.styles.scss";
-import BookMark from "../bookmark/bookmark.component";
+// import BookMark from "../bookmark/bookmark.component";
+import { currentNews } from "../../redux/currentNews/currentNews.actions";
+import { connect } from "react-redux";
 
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
@@ -40,18 +42,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({ key, title, image, description, publishedAt }) => {
+const Card = ({ key, title, image, description, publishedAt,currentNews}) => {
   const classes = useStyles();
-  console.log(title);
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  // const testWatchLater = () => {
-  //   console.log("hi");
-  //   history.push("/news");
-  // };
+
   return (
     <Grid item xs={3}>
       <CardBody className={classes.root} key={title}>
@@ -82,6 +80,7 @@ const Card = ({ key, title, image, description, publishedAt }) => {
                   [classes.expandOpen]: expanded,
                 })}
                 onClick={() => {
+                  currentNews({ newsListData:  title  });
                   history.push("/news");
                 }}
                 aria-expanded={expanded}
@@ -97,4 +96,12 @@ const Card = ({ key, title, image, description, publishedAt }) => {
   );
 };
 
-export default Card;
+// const mapStateToProps = ({newsData}) => ({
+//   newsListData:newsData.newsListData
+// })
+
+const mapDispatchToProps = dispatch => ({
+  currentNews: newsData => dispatch(currentNews(newsData)),
+});
+
+export default connect(null,mapDispatchToProps)(Card);

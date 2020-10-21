@@ -4,5 +4,5 @@ import currentNewsReducer from './currentNews/currentNews.reducer';
 
 export default combineReducers({
     news: homeReducer,
-    newsData: currentNewsReducer
+    currentNews: currentNewsReducer
 });
