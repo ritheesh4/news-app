@@ -1,23 +1,24 @@
 import { BookmarksActionTypes } from './bookmarks.types';
 
 const INITIAL_STATE = [
-    { bookmarksList: null }
+    // { bookmarksList: null }
 ]
 
 const bookmarksReducer = (list = INITIAL_STATE, action) => {
     switch (action.type) {
         case BookmarksActionTypes.BOOKMARK_ITEM:
             const bookMarkIndex = list.findIndex(
-                (eachObj) => eachObj.title === action.payload[0].title
+                (eachObj) => eachObj.title === action.payload.title
             );
-            if (bookMarkIndex) {
+            if (bookMarkIndex > -1) {
                 list.splice(bookMarkIndex, 1);
+                return list;
+
             } else {
-                list.push(...action.payload);
+                list.push(action.payload);
+                return list;
             }
-            return {
-                bookmarksList: list
-            }
+
         default:
             return list;
     }

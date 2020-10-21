@@ -4,9 +4,15 @@ import Card from "../card/card.component";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 
-const CardsContainer = (props) => { 
+const CardsContainer = (props) => {
+  window.scrollTo(0, 0);
   return (
-    <Grid container spacing={3} className='fade-in' style={{width:'95vw', margin:'auto'}}>
+    <Grid
+      container
+      spacing={3}
+      className="fade-in"
+      style={{ width: "95vw", margin: "auto" }}
+    >
       {props.result
         ? props.result.map((item) => (
             <Card
@@ -23,11 +29,17 @@ const CardsContainer = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  try {
-    const result = { ...state.news.newsList.news };
-    return { result: Object.values(result) };
-  } catch {}
-  return { newsList: [0] };
+  if (window.location.pathname === "/bookmarks") {
+    console.log(state.bookMarkItem);
+    console.log("hello");
+    return { result: state.bookMarkItem };
+  } else {
+    try {
+      const result = { ...state.news.newsList.news };
+      return { result: Object.values(result) };
+    } catch {}
+    return { newsList: [0] };
+  }
 };
 
 export default connect(mapStateToProps)(CardsContainer);

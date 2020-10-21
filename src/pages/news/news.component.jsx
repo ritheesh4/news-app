@@ -41,7 +41,7 @@ const News = (data) => {
         >
           {currentNews[0].title}
         </Typography>
-        <img src={currentNews[0].urlToImage} />
+        <img src={currentNews[0].urlToImage} alt="news"/>
         <Typography
           style={{
             width: "50%",

@@ -6,5 +6,5 @@ import bookmarksReducer from './bookmarks/bookmarks.reducer';
 export default combineReducers({
     news: homeReducer,
     currentNews: currentNewsReducer,
-    bookmarks: bookmarksReducer
+    bookMarkItem: bookmarksReducer
 });

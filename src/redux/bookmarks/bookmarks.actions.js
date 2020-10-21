@@ -1,6 +1,6 @@
-import {BookmarksActionTypes} from './bookmarks.types';
+import { BookmarksActionTypes } from './bookmarks.types';
 
-export const bookMarkItem = bookMark => ({
+export const bookMarkItem = item => ({
     type: BookmarksActionTypes.BOOKMARK_ITEM,
-    payload: bookMark
+    payload: item
 })

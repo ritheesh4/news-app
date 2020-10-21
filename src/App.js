@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/homepage/hompepage.component';
 import News from './pages/news/news.component';
+import BookMarks from './pages/bookmarks/bookmarks.component';
 import { connect } from 'react-redux';
 import { fetchNews } from './redux/home/home.actions';
 
@@ -12,7 +13,7 @@ class App extends React.Component {
     (async () => {
       await fetch('http://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=69cf4a8328d54e23921a8be3e595f01b').then(response => response.json()
         .then(data => fetchNews({
-          news:data.articles
+          news: data.articles
         })));
     })()
   }
@@ -23,6 +24,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/news' component={News} />
+          <Route path='/bookmarks' component={BookMarks} />
         </Switch>
       </div>
     );
