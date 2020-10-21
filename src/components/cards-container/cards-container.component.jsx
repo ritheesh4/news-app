@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 
 const CardsContainer = (props) => { 
   return (
-    <Grid container spacing={3} className='fade-in'>
+    <Grid container spacing={3} className='fade-in' style={{width:'95vw', margin:'auto'}}>
       {props.result
         ? props.result.map((item) => (
             <Card

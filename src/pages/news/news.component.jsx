@@ -6,28 +6,56 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { connect } from "react-redux";
 
-const News = (data) => (
-  <div className="news-container">
-    {console.log(data.news)}
-    {console.log(data.result)}
-    <NavigationBar />
-    <CssBaseline />
-    <Container fixed>
-      <Typography
-        component="div"
-        style={{ backgroundColor: "white", height: "100vh" }}
-        className="news-details"
+const News = (data) => {
+  const clickedTitle = data.news.newsListData;
+  const currentNews = data.result.filter(
+    (eachObj) => eachObj.title === clickedTitle
+  );
+  window.scrollTo(0, 0);
+  return (
+    <div className="news-container">
+      <NavigationBar />
+      <CssBaseline />
+      <Container
+        fixed
+        style={{
+          backgroundColor: "white",
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+        }} className='fade-in'
       >
-        {data.news}
-      </Typography>
-    </Container>
-  </div>
-);
-
-// const mapStateToProps = (data) => ({
-//   news: data.currentNews.newsListData,
-//   newsList: data.news.newsList.news,
-// });
+        <Typography
+          component="div"
+          className="news-details"
+          variant="h4"
+          style={{
+            marginBottom: "0.5em",
+            marginTop: "0.5em",
+            fontWeight: "bold",
+            width: "95%",
+            textAlign: "left",
+          }}
+        >
+          {currentNews[0].title}
+        </Typography>
+        <img src={currentNews[0].urlToImage} />
+        <Typography
+          style={{
+            width: "50%",
+            paddingTop: "1em",
+            variant: "h6",
+          }}
+        >
+          {currentNews[0].description}
+        </Typography>
+        <a href={currentNews[0].url}>Read More</a>
+      </Container>
+    </div>
+  );
+};
 
 const mapStateToProps = (data) => {
   try {
