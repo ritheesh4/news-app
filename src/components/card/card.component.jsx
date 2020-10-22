@@ -66,20 +66,15 @@ const Card = ({
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <Route
-            render={({ history }) => (
-              <IconButton
-                onClick={() => {
-                  let urlToImage = image;
-                  bookMarkItem({ title, publishedAt, urlToImage, description });
-                  // history.push("/news");
-                }}
-                aria-label="add to favorites"
-              >
-                <WatchLaterIcon />
-              </IconButton>
-            )}
-          />
+          <IconButton
+            onClick={() => {
+              let urlToImage = image;
+              bookMarkItem({ title, publishedAt, urlToImage, description });
+            }}
+            aria-label="add to favorites"
+          >
+            <WatchLaterIcon />
+          </IconButton>
           <Route
             render={({ history }) => (
               <IconButton

@@ -6,7 +6,7 @@ const Footer = () => (
         <ul>
             <li>News</li>
             <li>Latest</li>
-            <li>All copy rights reserved</li>
+            <li>© All copy rights reserved</li>
         </ul>
     </div>
 )

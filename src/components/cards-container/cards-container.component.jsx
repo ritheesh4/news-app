@@ -11,7 +11,7 @@ const CardsContainer = (props) => {
       container
       spacing={3}
       className="fade-in"
-      style={{ width: "95vw", margin: "auto" }}
+      style={{ width: "95vw", margin: "auto" ,minHeight:"83.4vh"}}
     >
       {props.result
         ? props.result.map((item) => (
