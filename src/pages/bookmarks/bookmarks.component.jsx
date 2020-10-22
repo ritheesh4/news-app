@@ -3,14 +3,13 @@ import NavigationBar from "../../components/nav-bar/nav-bar.component";
 import CardsContainer from "../../components/cards-container/cards-container.component";
 import Footer from '../../components/footer/footer.component';
 
-
-import "./homepage.styles.scss";
-const HomePage = () => (
-  <div className="homepage">
+import "./bookmarks.styles.scss";
+const bookMarks = () => (
+  <div className="bookmarksPage">
     <NavigationBar/>
     <CardsContainer />
     <Footer/>
   </div>
 );
 
-export default HomePage;
+export default bookMarks;

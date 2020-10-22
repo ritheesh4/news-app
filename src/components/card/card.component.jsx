@@ -2,6 +2,7 @@ import React from "react";
 import "./card.styles.scss";
 // import BookMark from "../bookmark/bookmark.component";
 import { currentNews } from "../../redux/currentNews/currentNews.actions";
+import { bookMarkItem } from "../../redux/bookmarks/bookmarks.actions";
 import { connect } from "react-redux";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -42,13 +43,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({ key, title, image, description, publishedAt,currentNews}) => {
+const Card = ({
+  key,
+  title,
+  image,
+  description,
+  publishedAt,
+  currentNews,
+  bookMarkItem,
+}) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  const [expanded] = React.useState(false);
 
   return (
     <Grid item xs={3}>
@@ -61,18 +66,15 @@ const Card = ({ key, title, image, description, publishedAt,currentNews}) => {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <Route
-            render={({ history }) => (
-              <IconButton
-                onClick={() => {
-                  history.push("/news");
-                }}
-                aria-label="add to favorites"
-              >
-                <WatchLaterIcon />
-              </IconButton>
-            )}
-          />
+          <IconButton
+            onClick={() => {
+              let urlToImage = image;
+              bookMarkItem({ title, publishedAt, urlToImage, description });
+            }}
+            aria-label="add to favorites"
+          >
+            <WatchLaterIcon />
+          </IconButton>
           <Route
             render={({ history }) => (
               <IconButton
@@ -80,7 +82,8 @@ const Card = ({ key, title, image, description, publishedAt,currentNews}) => {
                   [classes.expandOpen]: expanded,
                 })}
                 onClick={() => {
-                  currentNews({ newsListData:  title  });
+                  currentNews({ newsListData: title });
+
                   history.push("/news");
                 }}
                 aria-expanded={expanded}
@@ -100,8 +103,9 @@ const Card = ({ key, title, image, description, publishedAt,currentNews}) => {
 //   newsListData:newsData.newsListData
 // })
 
-const mapDispatchToProps = dispatch => ({
-  currentNews: newsData => dispatch(currentNews(newsData)),
+const mapDispatchToProps = (dispatch) => ({
+  currentNews: (newsData) => dispatch(currentNews(newsData)),
+  bookMarkItem: (item) => dispatch(bookMarkItem(item)),
 });
 
-export default connect(null,mapDispatchToProps)(Card);
+export default connect(null, mapDispatchToProps)(Card);

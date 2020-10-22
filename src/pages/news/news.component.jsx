@@ -5,6 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { connect } from "react-redux";
+import Footer from "../../components/footer/footer.component";
 
 const News = (data) => {
   const clickedTitle = data.news.newsListData;
@@ -41,7 +42,7 @@ const News = (data) => {
         >
           {currentNews[0].title}
         </Typography>
-        <img src={currentNews[0].urlToImage} />
+        <img src={currentNews[0].urlToImage} alt="news"/>
         <Typography
           style={{
             width: "50%",
@@ -53,6 +54,7 @@ const News = (data) => {
         </Typography>
         <a href={currentNews[0].url}>Read More</a>
       </Container>
+      <Footer/>
     </div>
   );
 };

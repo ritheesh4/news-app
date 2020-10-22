@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 const currentNewsReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CurrentNewsActionTypes.CURRENT_NEWS:
-            console.log('hello')
+            
             return {
                 ...state,
                 newsListData: action.payload
