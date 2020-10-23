@@ -70,6 +70,9 @@ const Card = ({
             onClick={() => {
               let urlToImage = image;
               bookMarkItem({ title, publishedAt, urlToImage, description });
+              if(window.location === '/bookmarks'){
+                window.location.reload(false)
+              }
             }}
             aria-label="add to favorites"
           >
