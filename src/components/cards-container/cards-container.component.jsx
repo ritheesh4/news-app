@@ -3,7 +3,7 @@ import "./cards-container.styles.scss";
 import Card from "../card/card.component";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 
 class CardsContainer extends React.Component {
   // componentWillMount(props) {

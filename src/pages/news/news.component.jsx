@@ -8,10 +8,11 @@ import { connect } from "react-redux";
 import Footer from "../../components/footer/footer.component";
 
 const News = (data) => {
-  const clickedTitle = data.news.newsListData;
-  const currentNews = data.result.filter(
-    (eachObj) => eachObj.title === clickedTitle
-  );
+  // const clickedTitle = data.news.newsListData;
+  const clickedTitle = data.news && data.news.newsListData;
+  const currentNews =
+    data.result &&
+    data.result.filter((eachObj) => eachObj.title === clickedTitle);
   window.scrollTo(0, 0);
   return (
     <div className="news-container">
@@ -26,7 +27,8 @@ const News = (data) => {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-        }} className='fade-in'
+        }}
+        className="fade-in"
       >
         <Typography
           component="div"
@@ -39,10 +41,12 @@ const News = (data) => {
             width: "95%",
             textAlign: "left",
           }}
-        >
-          {currentNews[0].title}
+        >{console.log(currentNews)}
+          {
+          currentNews &&
+          currentNews.length && currentNews[0].title}
         </Typography>
-        <img src={currentNews[0].urlToImage} alt="news"/>
+        <img src={currentNews && currentNews[0].urlToImage} alt="news" />
         <Typography
           style={{
             width: "50%",
@@ -50,11 +54,11 @@ const News = (data) => {
             variant: "h6",
           }}
         >
-          {currentNews[0].description}
+          {currentNews && currentNews[0].description}
         </Typography>
-        <a href={currentNews[0].url}>Read More</a>
+        <a href={currentNews && currentNews[0].url}>Read More</a>
       </Container>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

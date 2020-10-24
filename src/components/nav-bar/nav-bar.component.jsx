@@ -17,6 +17,7 @@ const NavigationBar = () => (
         variant="h4"
         style={{
           width: "100%",
+          paddingLeft:"41.5%",
           fontWeight: "bold",
           fontFamily:
             "'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif",

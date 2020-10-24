@@ -11,8 +11,8 @@ const bookmarksReducer = (list = INITIAL_STATE, action) => {
                 (eachObj) => eachObj.title === action.payload.title
             );
             if (bookMarkIndex > -1) {
-                list.splice(bookMarkIndex, 1);
-                return list;
+                // list.splice(bookMarkIndex, 1);
+                return list.filter(item=> item.title !== action.payload.title);
 
             } else {
                 list.push(action.payload);
