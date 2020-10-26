@@ -8,11 +8,10 @@ import { connect } from "react-redux";
 import Footer from "../../components/footer/footer.component";
 
 const News = (data) => {
+  console.log(data.news);
   // const clickedTitle = data.news.newsListData;
-  const clickedTitle = data.news && data.news.newsListData;
-  const currentNews =
-    data.result &&
-    data.result.filter((eachObj) => eachObj.title === clickedTitle);
+  // const clickedTitle = data.news && data.news.newsListData;
+  const currentNews = data && data.news;
   window.scrollTo(0, 0);
   return (
     <div className="news-container">
@@ -41,12 +40,10 @@ const News = (data) => {
             width: "95%",
             textAlign: "left",
           }}
-        >{console.log(currentNews)}
-          {
-          currentNews &&
-          currentNews.length && currentNews[0].title}
+        >
+          {currentNews && currentNews.title}
         </Typography>
-        <img src={currentNews && currentNews[0].urlToImage} alt="news" />
+        <img src={currentNews && currentNews.image} alt="news" />
         <Typography
           style={{
             width: "50%",
@@ -54,9 +51,9 @@ const News = (data) => {
             variant: "h6",
           }}
         >
-          {currentNews && currentNews[0].description}
+          {currentNews && currentNews.description}
         </Typography>
-        <a href={currentNews && currentNews[0].url}>Read More</a>
+        <a href={currentNews && currentNews.url}>Read More</a>
       </Container>
       <Footer />
     </div>
@@ -65,9 +62,9 @@ const News = (data) => {
 
 const mapStateToProps = (data) => {
   try {
-    const result = { ...data.news.newsList.news };
+    // const result = { ...data.news.newsList.news };
     return {
-      result: Object.values(result),
+      // result: Object.values(result),
       news: data.currentNews.newsListData,
     };
   } catch {}

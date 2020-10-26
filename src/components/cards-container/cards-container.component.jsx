@@ -38,6 +38,7 @@ class CardsContainer extends React.Component {
                 image={item.urlToImage}
                 description={item.description}
                 publishedAt={item.publishedAt}
+                url={item.url}
               />
             ))
           : ""}

@@ -51,6 +51,7 @@ const Card = ({
   publishedAt,
   currentNews,
   bookMarkItem,
+  url,
 }) => {
   const classes = useStyles();
   const [expanded] = React.useState(false);
@@ -70,8 +71,8 @@ const Card = ({
             onClick={() => {
               let urlToImage = image;
               bookMarkItem({ title, publishedAt, urlToImage, description });
-              if(window.location === '/bookmarks'){
-                window.location.reload(false)
+              if (window.location === "/bookmarks") {
+                window.location.reload(false);
               }
             }}
             aria-label="add to favorites"
@@ -85,7 +86,7 @@ const Card = ({
                   [classes.expandOpen]: expanded,
                 })}
                 onClick={() => {
-                  currentNews({ newsListData: title });
+                  currentNews({ title, image, description, url });
 
                   history.push("/news");
                 }}
